@@ -8,11 +8,12 @@ const User = require('../../models/User');
 const { check, validationResult } = require('express-validator');
 
 // @route   GET api/auth
-// @desc    Test route
+// @desc    Get logged in user
 // @acces   Public
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
+    // send back the entire user object minus the password
     res.json(user);
   } catch (error) {
     console.error(error.message);
