@@ -3,10 +3,11 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Landing = ({ isAuthenticated }) => {
+const Landing = ({ isAuthenticated, user }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
+  console.log('the user is: ' + user);
   return (
     <div className='landing'>
       <div className='dark-overlay'>
@@ -36,7 +37,8 @@ Landing.proptTypes = {
 
 const mapStateToProps = state => ({
   // state is the global state and state.isAuthenticated is in auth.reducer.js
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps)(Landing);

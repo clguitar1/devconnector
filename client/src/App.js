@@ -14,6 +14,10 @@ import { loadUser } from './actions/auth.actions';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile-forms/CreateProfile';
+import EditProfile from './components/profile-forms/EditProfile';
+import AddExperience from './components/profile-forms/AddExperience';
+import AddEducation from './components/profile-forms/AddEducation';
+import Education from './components/dashboard/Education';
 
 // check for token in localStorage
 if (localStorage.token) {
@@ -42,6 +46,22 @@ const App = () => {
                 path='/create-profile'
                 component={CreateProfile}
               />
+              <PrivateRoute
+                exact
+                path='/edit-profile'
+                component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/add-experience'
+                component={AddExperience}
+              />
+              <PrivateRoute
+                exact
+                path='/add-education'
+                component={AddEducation}
+              />
+              <PrivateRoute exact path='/education' component={Education} />
             </Switch>
           </section>
         </Fragment>
