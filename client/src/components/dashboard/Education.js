@@ -7,7 +7,7 @@ import { Table, Button } from 'reactstrap';
 
 const Education = ({ education, deleteEducation }) => {
   const educations = education.map(edu => (
-    <tr key={edu.id}>
+    <tr key={edu._id}>
       <td>{edu.school}</td>
       <td>{edu.degree}</td>
       <td>

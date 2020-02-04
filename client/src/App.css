@@ -33,6 +33,10 @@
   text-align: center;
 }
 
+li {
+  list-style-type: none;
+}
+
 /* Overlay */
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
@@ -46,4 +50,12 @@
 a.btn,
 button.btn {
   border-radius: 0;
+}
+
+.ProfileTop,
+i {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

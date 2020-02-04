@@ -21,6 +21,16 @@ const NavbarComponent = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <Nav className='ml-auto mr-4' navbar>
       <NavItem>
+        <NavLink tag={RRNavLink} exact to='/profiles'>
+          Developer Profiles
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink tag={RRNavLink} exact to='/posts'>
+          Posts
+        </NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink tag={RRNavLink} exact to='/dashboard'>
           <i className='fas fa-user'></i> Dashboard
         </NavLink>
@@ -36,8 +46,8 @@ const NavbarComponent = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <Nav className='ml-auto mr-4' navbar>
       <NavItem>
-        <NavLink tag={RRNavLink} exact to='/#!'>
-          Developers
+        <NavLink tag={RRNavLink} exact to='/profiles'>
+          Developer Profiles
         </NavLink>
       </NavItem>
       <NavItem>
