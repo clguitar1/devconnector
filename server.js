@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const connectDB = require('./config/db');
 
@@ -11,6 +12,15 @@ app.use('/api/auth', require('./routes/api/auth.routes'));
 app.use('/api/posts', require('./routes/api/posts.routes'));
 app.use('/api/profile', require('./routes/api/profile.routes'));
 app.use('/api/users', require('./routes/api/users.routes'));
+
+// setve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(expres.static('client/build'));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
+}
 
 app.get('/', (req, res) => {
   res.send('API is running...');
