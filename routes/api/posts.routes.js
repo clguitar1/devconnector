@@ -117,8 +117,7 @@ router.put('/like/:id', auth, async (req, res) => {
 
     await post.save();
 
-    //res.json(post.likes);
-    res.json({ msg: 'Post liked' });
+    res.json(post.likes);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('server error');
@@ -148,8 +147,7 @@ router.put('/unlike/:id', auth, async (req, res) => {
 
     await post.save();
 
-    //res.json(post.likes);
-    res.json({ msg: 'Post unliked' });
+    res.json(post.likes);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('server error');

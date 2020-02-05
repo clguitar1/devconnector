@@ -1,0 +1,45 @@
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
+import { getPost } from '../../actions/post.actions';
+import PostItem from '../posts/PostItem';
+import CommentForm from '../post/CommentForm';
+import CommentItem from '../post/CommentItem';
+
+const Post = ({ getPost, post: { post, loading }, match }) => {
+  useEffect(() => {
+    getPost(match.params.id);
+  }, [getPost, match.params.id]);
+
+  return loading || post === null ? (
+    <Spinner />
+  ) : (
+    <div className='Post'>
+      <Link to='/posts' className='btn btn-light'>
+        Back to posts
+      </Link>
+      <div className='Post-PostItem container'>
+        <PostItem post={post} showActions={false} />
+      </div>
+      <CommentForm postId={post._id} />
+      <div className='Post-commentsDisplay'>
+        {post.comments.map(comment => (
+          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+Post.propTypes = {
+  getPost: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  post: state.post
+});
+
+export default connect(mapStateToProps, { getPost })(Post);

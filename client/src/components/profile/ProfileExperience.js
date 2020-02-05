@@ -6,7 +6,7 @@ const ProfileExperience = ({
   experience: { company, title, location, current, to, from, description }
 }) => {
   return (
-    <div>
+    <div className='ProfileExperience'>
       <h3 className='text-dark'>{company}</h3>
       <p>
         <Moment format='YYYY/MM/DD'>{from}</Moment> -{' '}

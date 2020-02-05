@@ -21,6 +21,7 @@ import Education from './components/dashboard/Education';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 
 // check for token in localStorage
 if (localStorage.token) {
@@ -68,6 +69,7 @@ const App = () => {
               />
               <PrivateRoute exact path='/education' component={Education} />
               <PrivateRoute exact path='/posts' component={Posts} />
+              <PrivateRoute exact path='/posts/:id' component={Post} />
             </Switch>
           </section>
         </Fragment>
