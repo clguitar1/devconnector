@@ -159,11 +159,13 @@ router.put('/unlike/:id', auth, async (req, res) => {
 // @access   PRIVATE
 router.post(
   '/comment/:id',
-  auth,
   [
-    check('text', 'Text is required')
-      .not()
-      .isEmpty()
+    auth,
+    [
+      check('text', 'Text is required')
+        .not()
+        .isEmpty()
+    ]
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -186,7 +188,7 @@ router.post(
 
       await post.save();
 
-      res.json({ msg: 'Comment saved!' });
+      res.json(post.comments);
     } catch (error) {
       console.error(error.message);
       res.status(500).send('server error');
